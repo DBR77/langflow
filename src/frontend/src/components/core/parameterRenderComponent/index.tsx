@@ -16,7 +16,7 @@ import InputFileComponent from "./components/inputFileComponent";
 import InputListComponent from "./components/inputListComponent";
 import IntComponent from "./components/intComponent";
 import KeypairListComponent from "./components/keypairListComponent";
-import LinkComponent from "./components/linkComponent";
+import McpComponent from "./components/mcpComponent";
 import MultiselectComponent from "./components/multiselectComponent";
 import PromptAreaComponent from "./components/promptComponent";
 import QueryComponent from "./components/queryComponent";
@@ -177,7 +177,7 @@ export function ParameterRenderComponent({
             fileTypes={templateData.fileTypes}
             file_path={templateData.file_path}
             isList={templateData.list ?? false}
-            tempFile={templateData.temp_file ?? false}
+            tempFile={templateData.temp_file ?? true}
             id={`inputfile_${id}`}
           />
         );
@@ -278,6 +278,16 @@ export function ParameterRenderComponent({
             info={templateData.info ?? ""}
             separator={templateData.separator}
             id={`query_${id}`}
+          />
+        );
+      case "mcp":
+        return (
+          <McpComponent
+            {...baseInputProps}
+            id={`mcp_${id}`}
+            editNode={editNode}
+            disabled={disabled}
+            value={templateValue}
           />
         );
       default:
